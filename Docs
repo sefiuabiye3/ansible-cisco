@@ -1,0 +1,150 @@
+# Dockerfile
+
+```Dockerfile
+FROM registry.access.redhat.com/ubi8/ubi:8.10
+
+USER root
+
+# Install required packages
+RUN dnf install -y \
+    python3 \
+    python3-pip \
+    sudo \
+    openssh-clients \
+    sshpass \
+    git \
+    vim \
+    iputils \
+    hostname \
+    which \
+    tar \
+    shadow-utils \
+    sssd-client \
+    krb5-workstation \
+    authselect \
+    && dnf clean all
+
+# Upgrade pip
+RUN python3 -m pip install --upgrade pip
+
+# Install Ansible and networking libraries
+RUN pip3 install \
+    ansible==9.* \
+    ansible-pylibssh \
+    paramiko \
+    netmiko \
+    jmespath \
+    dnspython
+
+# Install Cisco collections
+RUN ansible-galaxy collection install \
+    cisco.ios \
+    cisco.nxos \
+    cisco.asa \
+    ansible.netcommon
+
+# Create automation group
+RUN groupadd automation
+
+# Disable root password login
+RUN passwd -l root
+
+# Create workspace
+RUN mkdir -p /ansible
+
+# Set permissions
+RUN chgrp -R automation /ansible && \
+    chmod -R 2775 /ansible
+
+WORKDIR /ansible
+
+CMD ["/bin/bash"]
+```
+
+# Build Image
+
+```bash
+docker build -t rhel8-ansible-cisco .
+```
+
+# Run Container with Active Directory Integration
+
+```bash
+docker run -it \
+  --name ansible-cisco \
+  --network host \
+  -v $(pwd):/ansible \
+  -v /etc/passwd:/etc/passwd:ro \
+  -v /etc/group:/etc/group:ro \
+  -v /etc/shadow:/etc/shadow:ro \
+  -v /etc/sssd:/etc/sssd:ro \
+  -v /var/lib/sss:/var/lib/sss:ro \
+  -v /etc/krb5.conf:/etc/krb5.conf:ro \
+  --user $(id -u):$(id -g) \
+  rhel8-ansible-cisco
+```
+
+# Verify Active Directory User
+
+Inside container:
+
+```bash
+whoami
+id
+```
+
+Expected:
+
+* Your AD username
+* Your AD UNIX groups
+* No root access
+
+# Verify Ansible
+
+```bash
+ansible --version
+```
+
+# Verify Cisco Collections
+
+```bash
+ansible-galaxy collection list
+```
+
+# Verify Group Membership
+
+```bash
+groups
+```
+
+Expected:
+
+* automation
+* domain groups
+* linux groups
+
+# Notes
+
+This container:
+
+* does not run as root
+* uses host AD authentication
+* supports enterprise UNIX identity management
+* allows centralized RBAC using AD groups
+* works well for shared automation teams
+
+# Recommended Host Configuration
+
+The Linux host should already be joined to Active Directory using:
+
+```bash
+realm join DOMAIN.LOCAL
+```
+
+Verify:
+
+```bash
+id your_ad_user
+```
+
+before starting the container.
