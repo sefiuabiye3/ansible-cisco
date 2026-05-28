@@ -18,3 +18,9 @@ RHEL 8.10 container with Ansible and Cisco collections installed.
 
 ```bash
 docker build -t rhel8-ansible-cisco .
+
+## Run Container
+docker run -it \
+  --name ansible-cisco \
+  -v $(pwd):/ansible \
+  rhel8-ansible-cisco
