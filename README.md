@@ -18,17 +18,24 @@ RHEL 8.10 container with Ansible and Cisco collections installed.
 
 ```bash
 docker build -t rhel8-ansible-cisco .
+```
 
 ---
+
 ## Run Container
 
+```bash
 docker run -it --rm \
   -v /home/sabioye/Project/ansible:/ansible:Z \
   -v /home/sabioye/.ssh:/home/sabioye/.ssh:ro,Z \
   rhel8-ansible-cisco
-=====================================================================
-for network switch inventory
+```
 
+## Example Inventory Configuration
+
+For network switch inventory:
+
+```ini
 [cisco_ios]
 10.0.0.131
 10.0.0.132
@@ -38,3 +45,4 @@ ansible_connection=network_cli
 ansible_network_os=cisco.ios.ios
 ansible_user=sabioye
 ansible_password=<password>
+```
