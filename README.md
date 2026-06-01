@@ -22,8 +22,7 @@ docker build -t rhel8-ansible-cisco .
 ---
 ## Run Container
 
-docker run -it \
-  --network host \
-  --name ansible-cisco \
-  -v $(pwd):/ansible \
+docker run -it --rm \
+  -v /home/sabioye/Project/ansible:/ansible:Z \
+  -v /home/sabioye/.ssh:/home/sabioye/.ssh:ro,Z \
   rhel8-ansible-cisco
