@@ -26,3 +26,15 @@ docker run -it --rm \
   -v /home/sabioye/Project/ansible:/ansible:Z \
   -v /home/sabioye/.ssh:/home/sabioye/.ssh:ro,Z \
   rhel8-ansible-cisco
+=====================================================================
+for network switch inventory
+
+[cisco_ios]
+10.0.0.131
+10.0.0.132
+
+[cisco_ios:vars]
+ansible_connection=network_cli
+ansible_network_os=cisco.ios.ios
+ansible_user=sabioye
+ansible_password=<password>
