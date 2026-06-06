@@ -3,8 +3,8 @@ FROM registry.access.redhat.com/ubi8/ubi:8.10
 USER root
 
 RUN dnf install -y \
-    python3 \
-    python3-pip \
+    python39 \
+    python39-pip \
     openssh-clients \
     sshpass \
     git \
@@ -22,6 +22,7 @@ RUN pip3 install \
     ansible-pylibssh \
     paramiko \
     netmiko
+RUN mkdir -p /usr/share/ansible/collections
 
 RUN ansible-galaxy collection install \
     cisco.ios \
