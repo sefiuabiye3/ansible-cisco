@@ -144,6 +144,53 @@ realm join DOMAIN.LOCAL
 Verify:
 
 ```bash
+
+
+
+
+# Performance Accomplishment Report
+
+## 1. Ensure a Future-Ready Workplace
+
+Contributed to the deployment of the new High-Performance Computing (HPC) infrastructure (Gold environment) by performing the cabling and connectivity setup for VMware ESXi hosts, compute nodes, Cisco network switches, and NetApp storage systems. This work helped establish a reliable and scalable infrastructure foundation to support future business and technology requirements.
+
+Additionally, developed and published a Knowledge Base (KB) article documenting the procedure for restoring Cisco network switches to factory default settings. This documentation improves operational efficiency, supports knowledge sharing, and reduces troubleshooting time for support teams.
+
+## 2. Accelerate Digital
+
+Currently developing an automation framework using Ansible to streamline the configuration and management of network switches. The initiative is focused on reducing manual intervention, improving configuration consistency, minimizing deployment errors, and increasing operational efficiency through infrastructure automation.
+
+Key benefits include:
+
+* Standardized network device configurations.
+* Faster deployment and provisioning processes.
+* Reduced operational risk caused by manual configuration changes.
+* Improved scalability for future network growth.
+
+## 3. Modernize Our Environment
+
+Supported modernization efforts through the implementation of new HPC infrastructure components and the adoption of automation technologies. By integrating modern virtualization, storage, and networking platforms, the environment is being positioned for improved performance, scalability, and maintainability.
+
+The use of Ansible automation further supports infrastructure modernization by enabling Infrastructure as Code (IaC) practices and reducing reliance on manual processes.
+
+## 4. Improve Service Excellence
+
+Enhanced service quality and operational support by creating technical documentation and standard operating procedures. The Knowledge Base article for Cisco switch recovery provides a repeatable process that enables faster issue resolution and reduces downtime.
+
+Additionally, ongoing automation initiatives are expected to improve service reliability, reduce configuration-related incidents, and accelerate response times for infrastructure deployment and maintenance activities.
+
+## 5. Ownership Goal
+
+Demonstrated ownership by taking responsibility for critical infrastructure deployment activities and proactively identifying opportunities for process improvement. Independently developed technical documentation and initiated network automation efforts that will provide long-term operational benefits to the organization.
+
+Consistently ensured that assigned tasks were completed accurately, documented appropriately, and aligned with organizational objectives.
+
+## 6. Embrace Digital-First Competencies
+
+Actively expanded digital and automation capabilities through the use of Ansible for network infrastructure management. Leveraged modern technology solutions to improve operational effectiveness, reduce manual effort, and support digital transformation initiatives.
+
+Continued to build expertise in infrastructure automation, virtualization, storage, and network technologies while promoting knowledge sharing through documentation and process standardization. These efforts support a digital-first approach and contribute to the organization's long-term technology strategy.
+
 id your_ad_user
 ```
 
